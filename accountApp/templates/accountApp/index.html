@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<form action="{% url 'welcomePerson' %}" method="post">
+    <!--Input for challenge-->
+    <input type="text" name="amountToAdd">
+
+    {% csrf_token %}
+    {% for eachPerson in allPeople %}
+<p>{{ eachPerson.name }} have {{ eachPerson.checking }} as checking and saved {{ eachPerson.savings }}</p><a
+        href="{% url 'addAmount' eachPerson.id %}">add amount</a>
+    {% endfor %}
+    <input type="text" name="personName">
+    <button>Submit</button>
+</form>
+</body>
+</html>
